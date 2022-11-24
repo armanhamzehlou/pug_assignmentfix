@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 
+var indexRouter = require(path.join(__dirname ,'/routes/index'));
 
 var app = express();
 
@@ -13,8 +14,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/h1", (req,res)=>{
-  res.end("hello");
-}
-);
+app.use('/', indexRouter);
+
 module.exports = app;
